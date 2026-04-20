@@ -17,14 +17,38 @@ git config --global init.defaultBranch main
 ## 2. Authentication (GitHub CLI)
 The GitHub CLI (`gh`) is the modern standard for interacting with GitHub. It replaces the need for manual Personal Access Tokens (PATs).
 
+### Installation via macOS CLI (Homebrew)
+Homebrew is the standard package manager for macOS. Use it to install the GitHub CLI:
+
 ```bash
-# Install GitHub CLI (macOS)
+# Update Homebrew to get the latest packages
+brew update
+
+# Install the GitHub CLI
 brew install gh
 
-# Log in
-gh auth login
-# Follow the prompts: GitHub.com > HTTPS > Login with browser
+# Verify the installation
+gh --version
 ```
+
+### The Authentication Process
+Once installed, you must link your local CLI to your GitHub account:
+
+```bash
+gh auth login
+```
+
+**Follow the interactive prompts:**
+1. **What account do you want to log into?** `GitHub.com`
+2. **What is your preferred protocol for Git operations?** `HTTPS`
+3. **Authenticate Git with your GitHub credentials?** `Yes`
+4. **How would you like to authenticate GitHub CLI?** `Login with a web browser`
+
+**Finalizing the Login:**
+- The CLI will generate a **one-time, 8-character code** (e.g., `ABCD-1234`).
+- Press **Enter** to open the GitHub device activation page in your default browser.
+- Paste the code into the browser and click **Authorize**.
+- Return to your terminal—you should see `✓ Logged in as <your-username>`.
 
 ## 3. Creating and Pushing a Repository
 To take a local project and put it on GitHub:
